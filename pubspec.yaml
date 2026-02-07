@@ -1,0 +1,91 @@
+name: sango
+description: "Sango Taxi - Ride-hailing app for booking taxi rides, connecting with nearby drivers, real-time tracking, and secure passenger transportation services. No courses or educational content included."
+
+version: 1.0.0+50
+
+
+
+environment:
+  sdk: ^3.6.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  google_maps_flutter: ^2.12.2
+  location: ^5.0.3
+  # http: ^1.1.0 # Add this for API calls
+  flutter_launcher_icons: ^0.14.3
+  http: ^0.13.6
+  google_maps_webservice: ^0.0.20-nullsafety.5
+  url_launcher: ^6.2.2
+  carousel_slider: ^5.1.1
+  google_places_flutter: ^2.1.0
+  google_directions_api: ^0.9.1
+  flutter_typeahead: ^5.2.0
+  dio: ^5.8.0+1
+  shimmer: ^3.0.0
+  flutter_secure_storage: ^9.2.4
+  map_launcher: ^3.5.0
+  dropdown_search: ^6.0.2
+  device_info_plus: ^9.1.0
+  flutter_udid: ^2.0.1
+  intl: 0.20.2  # Update to match required version
+  shared_preferences: ^2.2.2
+  provider: ^6.0.5
+  # geolocator: ^14.0.2
+  # geocoding: ^4.0.0
+  geolocator: ^11.0.0
+  geocoding: ^3.0.0
+  google_polyline_algorithm: ^3.1.0
+  cached_network_image: ^3.3.1
+  google_sign_in: ^7.1.1
+  image_picker: ^1.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+ 
+  flutter_lints: ^5.0.0
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/sango.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/sango.png"
+  adaptive_icon_foreground_scale_mode: "cover"
+  adaptive_icon_foreground_scale: 1.0
+flutter:
+  uses-material-design: true
+  generate: true
+
+  # Enable generation of localized Strings from arb files
+
+  assets:
+    - assets/images/
+    - assets/sango.png
+    - assets/logo.png
+
+fonts:
+    - family: Roboto
+      fonts:
+        - asset: fonts/Roboto-Thin.ttf
+          weight: 100
+        - asset: fonts/Roboto-Light.ttf
+          weight: 300
+        - asset: fonts/Roboto-Regular.ttf
+          weight: 400
+        - asset: fonts/Roboto-Medium.ttf
+          weight: 500
+        - asset: fonts/Roboto-Bold.ttf
+          weight: 700
+        - asset: fonts/Roboto-Black.ttf
+          weight: 900
+        - asset: fonts/Roboto-Italic.ttf
+          style: italic
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/to/font-from-package

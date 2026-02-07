@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "444584461476",
+    "project_id": "sango-taxi-33a27",
+    "storage_bucket": "sango-taxi-33a27.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:444584461476:android:4597f01ad2b6aa992c5231",
+        "android_client_info": {
+          "package_name": "com.sango.itecmove"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCyw9PDT93V4eXQQ0_17BEU9mrdU6xlcB8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

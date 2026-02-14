@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import '../models/cart_item_model.dart';
+import '../l10n/l10n.dart';
 import '../services/delivery_service.dart';
 import '../services/storage_service.dart';
 import 'package:sango/screen/deliveryCheckoutScreen.dart';
@@ -36,8 +37,8 @@ class _CartScreenState extends State<CartScreen> {
         final clientData = await StorageService.getClientData();
         if (clientData == null || clientData['user_id'] == null) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Please login to update cart'),
+            SnackBar(
+              content: Text(S.of(context)!.pleaseLoginToUpdateCart),
               backgroundColor: Colors.red,
             ),
           );
@@ -49,8 +50,8 @@ class _CartScreenState extends State<CartScreen> {
 
         if (cartItem.cartId == null) {
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Invalid cart item'),
+            SnackBar(
+              content: Text(S.of(context)!.invalidCartItem),
               backgroundColor: Colors.red,
             ),
           );
@@ -83,7 +84,8 @@ class _CartScreenState extends State<CartScreen> {
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text(result['message'] ?? 'Failed to update cart'),
+              content:
+                  Text(result['message'] ?? S.of(context)!.failedToUpdateCart),
               backgroundColor: Colors.red,
             ),
           );
@@ -92,7 +94,7 @@ class _CartScreenState extends State<CartScreen> {
         print('Error updating quantity: $e');
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error updating cart: $e'),
+            content: Text(S.of(context)!.errorUpdatingCart(e.toString())),
             backgroundColor: Colors.red,
           ),
         );
@@ -105,8 +107,8 @@ class _CartScreenState extends State<CartScreen> {
       final clientData = await StorageService.getClientData();
       if (clientData == null || clientData['user_id'] == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please login to update cart'),
+          SnackBar(
+            content: Text(S.of(context)!.pleaseLoginToUpdateCart),
             backgroundColor: Colors.red,
           ),
         );
@@ -118,8 +120,8 @@ class _CartScreenState extends State<CartScreen> {
 
       if (cartItem.cartId == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Invalid cart item'),
+          SnackBar(
+            content: Text(S.of(context)!.invalidCartItem),
             backgroundColor: Colors.red,
           ),
         );
@@ -144,7 +146,8 @@ class _CartScreenState extends State<CartScreen> {
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['message'] ?? 'Failed to remove item'),
+            content:
+                Text(result['message'] ?? S.of(context)!.failedToRemoveItem),
             backgroundColor: Colors.red,
           ),
         );
@@ -153,7 +156,7 @@ class _CartScreenState extends State<CartScreen> {
       print('Error removing item: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error removing item: $e'),
+          content: Text(S.of(context)!.errorRemovingItem(e.toString())),
           backgroundColor: Colors.red,
         ),
       );
@@ -174,11 +177,12 @@ class _CartScreenState extends State<CartScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Shopping Cart',
-          style: TextStyle(
+        title: Text(
+          l10n.shoppingCart,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -203,7 +207,7 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    'Your cart is empty',
+                    l10n.cartEmpty,
                     style: TextStyle(
                       fontSize: 18,
                       color: Colors.grey[600],
@@ -374,6 +378,7 @@ class _CartScreenState extends State<CartScreen> {
   }
 
   Widget _buildSummary() {
+    final l10n = S.of(context)!;
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -393,9 +398,9 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Subtotal:',
-                  style: TextStyle(fontSize: 16),
+                Text(
+                  '${l10n.subtotal}:',
+                  style: const TextStyle(fontSize: 16),
                 ),
                 Text(
                   '${_subtotal.toStringAsFixed(0)} FCFA',
@@ -410,9 +415,9 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Delivery Fee:',
-                  style: TextStyle(fontSize: 16),
+                Text(
+                  '${l10n.deliveryFee}:',
+                  style: const TextStyle(fontSize: 16),
                 ),
                 Text(
                   '${_deliveryFee.toStringAsFixed(0)} FCFA',
@@ -427,9 +432,9 @@ class _CartScreenState extends State<CartScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Total:',
-                  style: TextStyle(
+                Text(
+                  '${l10n.total}:',
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -456,9 +461,9 @@ class _CartScreenState extends State<CartScreen> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                 ),
-                child: const Text(
-                  'Checkout',
-                  style: TextStyle(
+                child: Text(
+                  l10n.checkout,
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,

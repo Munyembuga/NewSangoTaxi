@@ -1908,6 +1908,354 @@ abstract class S {
   /// In en, this message translates to:
   /// **'Save'**
   String get save;
+
+  /// No description provided for @myOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'My Orders'**
+  String get myOrders;
+
+  /// No description provided for @processing.
+  ///
+  /// In en, this message translates to:
+  /// **'Processing'**
+  String get processing;
+
+  /// No description provided for @noCompletedOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No completed orders yet'**
+  String get noCompletedOrders;
+
+  /// No description provided for @noCancelledOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'No cancelled orders'**
+  String get noCancelledOrders;
+
+  /// No description provided for @noOrdersInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'No orders in progress'**
+  String get noOrdersInProgress;
+
+  /// No description provided for @orderWithId.
+  ///
+  /// In en, this message translates to:
+  /// **'Order #{id}'**
+  String orderWithId(Object id);
+
+  /// No description provided for @total.
+  ///
+  /// In en, this message translates to:
+  /// **'Total'**
+  String get total;
+
+  /// No description provided for @viewDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'View Details'**
+  String get viewDetails;
+
+  /// No description provided for @pleaseLoginToViewOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to view orders'**
+  String get pleaseLoginToViewOrders;
+
+  /// No description provided for @pleaseLoginToViewOrderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to view order details'**
+  String get pleaseLoginToViewOrderDetails;
+
+  /// No description provided for @failedToLoadOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load orders'**
+  String get failedToLoadOrders;
+
+  /// No description provided for @failedToLoadOrderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load order details'**
+  String get failedToLoadOrderDetails;
+
+  /// No description provided for @errorLoadingOrders.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading orders: {error}'**
+  String errorLoadingOrders(Object error);
+
+  /// No description provided for @errorLoadingOrderDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Error loading order details: {error}'**
+  String errorLoadingOrderDetails(Object error);
+
+  /// No description provided for @orderInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Information'**
+  String get orderInformation;
+
+  /// No description provided for @orderDate.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Date'**
+  String get orderDate;
+
+  /// No description provided for @paymentMethod.
+  ///
+  /// In en, this message translates to:
+  /// **'Payment Method'**
+  String get paymentMethod;
+
+  /// No description provided for @notes.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes'**
+  String get notes;
+
+  /// No description provided for @deliveryInformation.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Information'**
+  String get deliveryInformation;
+
+  /// No description provided for @customerName.
+  ///
+  /// In en, this message translates to:
+  /// **'Customer Name'**
+  String get customerName;
+
+  /// No description provided for @phone.
+  ///
+  /// In en, this message translates to:
+  /// **'Phone'**
+  String get phone;
+
+  /// No description provided for @orderItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Items'**
+  String get orderItems;
+
+  /// No description provided for @orderSummary.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Summary'**
+  String get orderSummary;
+
+  /// No description provided for @subtotal.
+  ///
+  /// In en, this message translates to:
+  /// **'Subtotal'**
+  String get subtotal;
+
+  /// No description provided for @deliveryFee.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Fee'**
+  String get deliveryFee;
+
+  /// No description provided for @delivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get delivery;
+
+  /// No description provided for @categories.
+  ///
+  /// In en, this message translates to:
+  /// **'Categories'**
+  String get categories;
+
+  /// No description provided for @selectCategoryToViewProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a category to view products'**
+  String get selectCategoryToViewProducts;
+
+  /// No description provided for @noProductsAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No products available'**
+  String get noProductsAvailable;
+
+  /// No description provided for @pleaseLoginToAddToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to add items to cart'**
+  String get pleaseLoginToAddToCart;
+
+  /// No description provided for @productAddedToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'{productName} added to cart'**
+  String productAddedToCart(Object productName);
+
+  /// No description provided for @failedToAddToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to add to cart'**
+  String get failedToAddToCart;
+
+  /// No description provided for @errorAddingToCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Error adding to cart: {error}'**
+  String errorAddingToCart(Object error);
+
+  /// No description provided for @failedToLoadCategories.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load categories: {error}'**
+  String failedToLoadCategories(Object error);
+
+  /// No description provided for @failedToLoadProducts.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to load products: {error}'**
+  String failedToLoadProducts(Object error);
+
+  /// No description provided for @checkout.
+  ///
+  /// In en, this message translates to:
+  /// **'Checkout'**
+  String get checkout;
+
+  /// No description provided for @deliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Address'**
+  String get deliveryAddress;
+
+  /// No description provided for @enterDeliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter delivery address'**
+  String get enterDeliveryAddress;
+
+  /// No description provided for @deliveryNotesOptional.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery Notes (Optional)'**
+  String get deliveryNotesOptional;
+
+  /// No description provided for @deliveryInstructionsHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Add any special instructions for delivery...'**
+  String get deliveryInstructionsHint;
+
+  /// No description provided for @placeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Place Order'**
+  String get placeOrder;
+
+  /// No description provided for @pleaseEnterDeliveryAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a delivery address'**
+  String get pleaseEnterDeliveryAddress;
+
+  /// No description provided for @pleaseSelectValidAddress.
+  ///
+  /// In en, this message translates to:
+  /// **'Please select a valid address from suggestions'**
+  String get pleaseSelectValidAddress;
+
+  /// No description provided for @pleaseLoginToPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to place order'**
+  String get pleaseLoginToPlaceOrder;
+
+  /// No description provided for @orderPlaced.
+  ///
+  /// In en, this message translates to:
+  /// **'Order Placed'**
+  String get orderPlaced;
+
+  /// No description provided for @orderPlacedSuccessfully.
+  ///
+  /// In en, this message translates to:
+  /// **'Your order has been placed successfully!'**
+  String get orderPlacedSuccessfully;
+
+  /// No description provided for @notesWithValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Notes: {value}'**
+  String notesWithValue(Object value);
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @failedToPlaceOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to place order'**
+  String get failedToPlaceOrder;
+
+  /// No description provided for @errorPlacingOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Error placing order: {error}'**
+  String errorPlacingOrder(Object error);
+
+  /// No description provided for @shoppingCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Shopping Cart'**
+  String get shoppingCart;
+
+  /// No description provided for @cartEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Your cart is empty'**
+  String get cartEmpty;
+
+  /// No description provided for @pleaseLoginToUpdateCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Please login to update cart'**
+  String get pleaseLoginToUpdateCart;
+
+  /// No description provided for @invalidCartItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid cart item'**
+  String get invalidCartItem;
+
+  /// No description provided for @failedToUpdateCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to update cart'**
+  String get failedToUpdateCart;
+
+  /// No description provided for @errorUpdatingCart.
+  ///
+  /// In en, this message translates to:
+  /// **'Error updating cart: {error}'**
+  String errorUpdatingCart(Object error);
+
+  /// No description provided for @failedToRemoveItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Failed to remove item'**
+  String get failedToRemoveItem;
+
+  /// No description provided for @errorRemovingItem.
+  ///
+  /// In en, this message translates to:
+  /// **'Error removing item: {error}'**
+  String errorRemovingItem(Object error);
 }
 
 class _SDelegate extends LocalizationsDelegate<S> {

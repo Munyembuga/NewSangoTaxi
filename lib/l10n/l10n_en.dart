@@ -997,4 +997,205 @@ class SEn extends S {
 
   @override
   String get save => 'Save';
+
+  @override
+  String get myOrders => 'My Orders';
+
+  @override
+  String get processing => 'Processing';
+
+  @override
+  String get noCompletedOrders => 'No completed orders yet';
+
+  @override
+  String get noCancelledOrders => 'No cancelled orders';
+
+  @override
+  String get noOrdersInProgress => 'No orders in progress';
+
+  @override
+  String orderWithId(Object id) {
+    return 'Order #$id';
+  }
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get viewDetails => 'View Details';
+
+  @override
+  String get pleaseLoginToViewOrders => 'Please login to view orders';
+
+  @override
+  String get pleaseLoginToViewOrderDetails =>
+      'Please login to view order details';
+
+  @override
+  String get failedToLoadOrders => 'Failed to load orders';
+
+  @override
+  String get failedToLoadOrderDetails => 'Failed to load order details';
+
+  @override
+  String errorLoadingOrders(Object error) {
+    return 'Error loading orders: $error';
+  }
+
+  @override
+  String errorLoadingOrderDetails(Object error) {
+    return 'Error loading order details: $error';
+  }
+
+  @override
+  String get orderInformation => 'Order Information';
+
+  @override
+  String get orderDate => 'Order Date';
+
+  @override
+  String get paymentMethod => 'Payment Method';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String get deliveryInformation => 'Delivery Information';
+
+  @override
+  String get customerName => 'Customer Name';
+
+  @override
+  String get phone => 'Phone';
+
+  @override
+  String get orderItems => 'Order Items';
+
+  @override
+  String get orderSummary => 'Order Summary';
+
+  @override
+  String get subtotal => 'Subtotal';
+
+  @override
+  String get deliveryFee => 'Delivery Fee';
+
+  @override
+  String get delivery => 'Delivery';
+
+  @override
+  String get categories => 'Categories';
+
+  @override
+  String get selectCategoryToViewProducts =>
+      'Select a category to view products';
+
+  @override
+  String get noProductsAvailable => 'No products available';
+
+  @override
+  String get pleaseLoginToAddToCart => 'Please login to add items to cart';
+
+  @override
+  String productAddedToCart(Object productName) {
+    return '$productName added to cart';
+  }
+
+  @override
+  String get failedToAddToCart => 'Failed to add to cart';
+
+  @override
+  String errorAddingToCart(Object error) {
+    return 'Error adding to cart: $error';
+  }
+
+  @override
+  String failedToLoadCategories(Object error) {
+    return 'Failed to load categories: $error';
+  }
+
+  @override
+  String failedToLoadProducts(Object error) {
+    return 'Failed to load products: $error';
+  }
+
+  @override
+  String get checkout => 'Checkout';
+
+  @override
+  String get deliveryAddress => 'Delivery Address';
+
+  @override
+  String get enterDeliveryAddress => 'Enter delivery address';
+
+  @override
+  String get deliveryNotesOptional => 'Delivery Notes (Optional)';
+
+  @override
+  String get deliveryInstructionsHint =>
+      'Add any special instructions for delivery...';
+
+  @override
+  String get placeOrder => 'Place Order';
+
+  @override
+  String get pleaseEnterDeliveryAddress => 'Please enter a delivery address';
+
+  @override
+  String get pleaseSelectValidAddress =>
+      'Please select a valid address from suggestions';
+
+  @override
+  String get pleaseLoginToPlaceOrder => 'Please login to place order';
+
+  @override
+  String get orderPlaced => 'Order Placed';
+
+  @override
+  String get orderPlacedSuccessfully =>
+      'Your order has been placed successfully!';
+
+  @override
+  String notesWithValue(Object value) {
+    return 'Notes: $value';
+  }
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get failedToPlaceOrder => 'Failed to place order';
+
+  @override
+  String errorPlacingOrder(Object error) {
+    return 'Error placing order: $error';
+  }
+
+  @override
+  String get shoppingCart => 'Shopping Cart';
+
+  @override
+  String get cartEmpty => 'Your cart is empty';
+
+  @override
+  String get pleaseLoginToUpdateCart => 'Please login to update cart';
+
+  @override
+  String get invalidCartItem => 'Invalid cart item';
+
+  @override
+  String get failedToUpdateCart => 'Failed to update cart';
+
+  @override
+  String errorUpdatingCart(Object error) {
+    return 'Error updating cart: $error';
+  }
+
+  @override
+  String get failedToRemoveItem => 'Failed to remove item';
+
+  @override
+  String errorRemovingItem(Object error) {
+    return 'Error removing item: $error';
+  }
 }

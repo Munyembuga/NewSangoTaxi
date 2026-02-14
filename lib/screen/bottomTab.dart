@@ -193,7 +193,7 @@ class _BottomNavigationScreenState extends State<BottomNavigation>
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.receipt_long),
-            label: 'Orders',
+            label: s.myOrders,
           ),
           BottomNavigationBarItem(
             icon: const Icon(Icons.person_2_outlined),

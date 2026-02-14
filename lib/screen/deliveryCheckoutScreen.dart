@@ -3,6 +3,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/cart_item_model.dart';
+import '../l10n/l10n.dart';
 import '../services/delivery_service.dart';
 import '../services/storage_service.dart';
 
@@ -110,10 +111,11 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
   }
 
   void _placeOrder() async {
+    final l10n = S.of(context)!;
     if (_deliveryAddressController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a delivery address'),
+        SnackBar(
+          content: Text(l10n.pleaseEnterDeliveryAddress),
           backgroundColor: Colors.red,
         ),
       );
@@ -122,8 +124,8 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
 
     if (_deliveryLat == null || _deliveryLng == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please select a valid address from suggestions'),
+        SnackBar(
+          content: Text(l10n.pleaseSelectValidAddress),
           backgroundColor: Colors.red,
         ),
       );
@@ -136,8 +138,8 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
 
       if (clientData == null || clientData['user_id'] == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please login to place order'),
+          SnackBar(
+            content: Text(l10n.pleaseLoginToPlaceOrder),
             backgroundColor: Colors.red,
           ),
         );
@@ -176,21 +178,21 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => AlertDialog(
-            title: const Text('Order Placed'),
+            title: Text(l10n.orderPlaced),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Your order has been placed successfully!'),
+                Text(l10n.orderPlacedSuccessfully),
                 const SizedBox(height: 16),
                 Text(
-                  'Delivery Address:',
+                  '${l10n.deliveryAddress}:',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Text(_deliveryAddressController.text),
                 const SizedBox(height: 8),
                 Text(
-                  'Total: ${widget.total.toStringAsFixed(0)} FCFA',
+                  '${l10n.total}: ${widget.total.toStringAsFixed(0)} FCFA',
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
@@ -198,7 +200,7 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                 ),
                 if (_notesController.text.isNotEmpty) ...[
                   const SizedBox(height: 8),
-                  Text('Notes: ${_notesController.text}'),
+                  Text(l10n.notesWithValue(_notesController.text)),
                 ],
               ],
             ),
@@ -210,9 +212,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                   Navigator.pop(context); // Close cart
                   Navigator.pop(context); // Close delivery screen
                 },
-                child: const Text(
-                  'OK',
-                  style: TextStyle(color: Color(0xFFF5141E)),
+                child: Text(
+                  l10n.ok,
+                  style: const TextStyle(color: Color(0xFFF5141E)),
                 ),
               ),
             ],
@@ -222,7 +224,7 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
         // Show error message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['message'] ?? 'Failed to place order'),
+            content: Text(result['message'] ?? l10n.failedToPlaceOrder),
             backgroundColor: Colors.red,
             duration: const Duration(seconds: 3),
           ),
@@ -237,7 +239,7 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
       print('Error placing order: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error placing order: $e'),
+          content: Text(l10n.errorPlacingOrder(e.toString())),
           backgroundColor: Colors.red,
           duration: const Duration(seconds: 3),
         ),
@@ -247,11 +249,12 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Checkout',
-          style: TextStyle(
+        title: Text(
+          l10n.checkout,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -271,9 +274,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               // Order Summary
-              const Text(
-                'Order Summary',
-                style: TextStyle(
+              Text(
+                l10n.orderSummary,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -312,9 +315,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Text(
-                          'Total:',
-                          style: TextStyle(
+                        Text(
+                          '${l10n.total}:',
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
                           ),
@@ -336,9 +339,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
               const SizedBox(height: 24),
 
               // Delivery Address
-              const Text(
-                'Delivery Address',
-                style: TextStyle(
+              Text(
+                l10n.deliveryAddress,
+                style: const TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                 ),
@@ -407,7 +410,7 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                     controller: controller,
                     focusNode: focusNode,
                     decoration: InputDecoration(
-                      hintText: 'Enter delivery address',
+                      hintText: l10n.enterDeliveryAddress,
                       prefixIcon: _isLoadingLocation
                           ? const Padding(
                               padding: EdgeInsets.all(12),
@@ -445,9 +448,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
               const SizedBox(height: 16),
 
               // Delivery Notes
-              const Text(
-                'Delivery Notes (Optional)',
-                style: TextStyle(
+              Text(
+                l10n.deliveryNotesOptional,
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
@@ -457,7 +460,7 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                 controller: _notesController,
                 maxLines: 3,
                 decoration: InputDecoration(
-                  hintText: 'Add any special instructions for delivery...',
+                  hintText: l10n.deliveryInstructionsHint,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
@@ -478,9 +481,9 @@ class _DeliveryCheckoutScreenState extends State<DeliveryCheckoutScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
-                    'Place Order',
-                    style: TextStyle(
+                  child: Text(
+                    l10n.placeOrder,
+                    style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,

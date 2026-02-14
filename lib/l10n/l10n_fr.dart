@@ -1011,4 +1011,211 @@ class SFr extends S {
 
   @override
   String get save => 'Enregistrer';
+
+  @override
+  String get myOrders => 'Mes commandes';
+
+  @override
+  String get processing => 'En traitement';
+
+  @override
+  String get noCompletedOrders => 'Pas encore de commandes terminées';
+
+  @override
+  String get noCancelledOrders => 'Aucune commande annulée';
+
+  @override
+  String get noOrdersInProgress => 'Aucune commande en cours';
+
+  @override
+  String orderWithId(Object id) {
+    return 'Commande #$id';
+  }
+
+  @override
+  String get total => 'Total';
+
+  @override
+  String get viewDetails => 'Voir détails';
+
+  @override
+  String get pleaseLoginToViewOrders =>
+      'Veuillez vous connecter pour voir les commandes';
+
+  @override
+  String get pleaseLoginToViewOrderDetails =>
+      'Veuillez vous connecter pour voir les détails de la commande';
+
+  @override
+  String get failedToLoadOrders => 'Échec du chargement des commandes';
+
+  @override
+  String get failedToLoadOrderDetails =>
+      'Échec du chargement des détails de la commande';
+
+  @override
+  String errorLoadingOrders(Object error) {
+    return 'Erreur lors du chargement des commandes: $error';
+  }
+
+  @override
+  String errorLoadingOrderDetails(Object error) {
+    return 'Erreur lors du chargement des détails de la commande: $error';
+  }
+
+  @override
+  String get orderInformation => 'Informations sur la commande';
+
+  @override
+  String get orderDate => 'Date de commande';
+
+  @override
+  String get paymentMethod => 'Mode de paiement';
+
+  @override
+  String get notes => 'Notes';
+
+  @override
+  String get deliveryInformation => 'Informations de livraison';
+
+  @override
+  String get customerName => 'Nom du client';
+
+  @override
+  String get phone => 'Téléphone';
+
+  @override
+  String get orderItems => 'Articles commandés';
+
+  @override
+  String get orderSummary => 'Récapitulatif de la commande';
+
+  @override
+  String get subtotal => 'Sous-total';
+
+  @override
+  String get deliveryFee => 'Frais de livraison';
+
+  @override
+  String get delivery => 'Livraison';
+
+  @override
+  String get categories => 'Catégories';
+
+  @override
+  String get selectCategoryToViewProducts =>
+      'Sélectionnez une catégorie pour voir les produits';
+
+  @override
+  String get noProductsAvailable => 'Aucun produit disponible';
+
+  @override
+  String get pleaseLoginToAddToCart =>
+      'Veuillez vous connecter pour ajouter des articles au panier';
+
+  @override
+  String productAddedToCart(Object productName) {
+    return '$productName ajouté au panier';
+  }
+
+  @override
+  String get failedToAddToCart => 'Échec de l\'ajout au panier';
+
+  @override
+  String errorAddingToCart(Object error) {
+    return 'Erreur lors de l\'ajout au panier: $error';
+  }
+
+  @override
+  String failedToLoadCategories(Object error) {
+    return 'Échec du chargement des catégories: $error';
+  }
+
+  @override
+  String failedToLoadProducts(Object error) {
+    return 'Échec du chargement des produits: $error';
+  }
+
+  @override
+  String get checkout => 'Paiement';
+
+  @override
+  String get deliveryAddress => 'Adresse de livraison';
+
+  @override
+  String get enterDeliveryAddress => 'Entrez l\'adresse de livraison';
+
+  @override
+  String get deliveryNotesOptional => 'Notes de livraison (Optionnel)';
+
+  @override
+  String get deliveryInstructionsHint =>
+      'Ajoutez des instructions spéciales pour la livraison...';
+
+  @override
+  String get placeOrder => 'Passer la commande';
+
+  @override
+  String get pleaseEnterDeliveryAddress =>
+      'Veuillez entrer une adresse de livraison';
+
+  @override
+  String get pleaseSelectValidAddress =>
+      'Veuillez sélectionner une adresse valide dans les suggestions';
+
+  @override
+  String get pleaseLoginToPlaceOrder =>
+      'Veuillez vous connecter pour passer la commande';
+
+  @override
+  String get orderPlaced => 'Commande passée';
+
+  @override
+  String get orderPlacedSuccessfully =>
+      'Votre commande a été passée avec succès!';
+
+  @override
+  String notesWithValue(Object value) {
+    return 'Notes: $value';
+  }
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get failedToPlaceOrder => 'Échec de la commande';
+
+  @override
+  String errorPlacingOrder(Object error) {
+    return 'Erreur lors de la commande: $error';
+  }
+
+  @override
+  String get shoppingCart => 'Panier';
+
+  @override
+  String get cartEmpty => 'Votre panier est vide';
+
+  @override
+  String get pleaseLoginToUpdateCart =>
+      'Veuillez vous connecter pour modifier le panier';
+
+  @override
+  String get invalidCartItem => 'Article du panier invalide';
+
+  @override
+  String get failedToUpdateCart => 'Échec de la mise à jour du panier';
+
+  @override
+  String errorUpdatingCart(Object error) {
+    return 'Erreur lors de la mise à jour du panier: $error';
+  }
+
+  @override
+  String get failedToRemoveItem => 'Échec de la suppression de l\'article';
+
+  @override
+  String errorRemovingItem(Object error) {
+    return 'Erreur lors de la suppression de l\'article: $error';
+  }
 }

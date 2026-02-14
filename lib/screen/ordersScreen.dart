@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/delivery_service.dart';
 import '../services/storage_service.dart';
+import '../l10n/l10n.dart';
 
 class OrdersScreen extends StatefulWidget {
   const OrdersScreen({Key? key}) : super(key: key);
@@ -92,15 +93,15 @@ class _OrdersScreenState extends State<OrdersScreen>
         setState(() {
           if (status == 'pending') {
             _hasErrorPending = true;
-            _errorMessagePending = 'Please login to view orders';
+            _errorMessagePending = 'pleaseLoginToViewOrders';
             _isLoadingPending = false;
           } else if (status == 'completed') {
             _hasErrorCompleted = true;
-            _errorMessageCompleted = 'Please login to view orders';
+            _errorMessageCompleted = 'pleaseLoginToViewOrders';
             _isLoadingCompleted = false;
           } else {
             _hasErrorCancelled = true;
-            _errorMessageCancelled = 'Please login to view orders';
+            _errorMessageCancelled = 'pleaseLoginToViewOrders';
             _isLoadingCancelled = false;
           }
         });
@@ -134,15 +135,15 @@ class _OrdersScreenState extends State<OrdersScreen>
         setState(() {
           if (status == 'pending') {
             _hasErrorPending = true;
-            _errorMessagePending = result['message'] ?? 'Failed to load orders';
+            _errorMessagePending = result['message'] ?? 'failedToLoadOrders';
             _isLoadingPending = false;
           } else if (status == 'completed') {
             _hasErrorCompleted = true;
-            _errorMessageCompleted = result['message'] ?? 'Failed to load orders';
+            _errorMessageCompleted = result['message'] ?? 'failedToLoadOrders';
             _isLoadingCompleted = false;
           } else {
             _hasErrorCancelled = true;
-            _errorMessageCancelled = result['message'] ?? 'Failed to load orders';
+            _errorMessageCancelled = result['message'] ?? 'failedToLoadOrders';
             _isLoadingCancelled = false;
           }
         });
@@ -151,15 +152,15 @@ class _OrdersScreenState extends State<OrdersScreen>
       setState(() {
         if (status == 'pending') {
           _hasErrorPending = true;
-          _errorMessagePending = 'Error loading orders: $e';
+          _errorMessagePending = 'errorLoadingOrders:$e';
           _isLoadingPending = false;
         } else if (status == 'completed') {
           _hasErrorCompleted = true;
-          _errorMessageCompleted = 'Error loading orders: $e';
+          _errorMessageCompleted = 'errorLoadingOrders:$e';
           _isLoadingCompleted = false;
         } else {
           _hasErrorCancelled = true;
-          _errorMessageCancelled = 'Error loading orders: $e';
+          _errorMessageCancelled = 'errorLoadingOrders:$e';
           _isLoadingCancelled = false;
         }
       });
@@ -194,11 +195,12 @@ class _OrdersScreenState extends State<OrdersScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = S.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'My Orders',
-          style: TextStyle(
+        title: Text(
+          l10n.myOrders,
+          style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -221,10 +223,10 @@ class _OrdersScreenState extends State<OrdersScreen>
             fontSize: 14,
             fontWeight: FontWeight.w400,
           ),
-          tabs: const [
-            Tab(text: 'Processing'),
-            Tab(text: 'Completed'),
-            Tab(text: 'Cancelled'),
+          tabs: [
+            Tab(text: l10n.processing),
+            Tab(text: l10n.completed),
+            Tab(text: l10n.cancelled),
           ],
         ),
       ),
@@ -254,7 +256,7 @@ class _OrdersScreenState extends State<OrdersScreen>
     }
 
     if (hasError) {
-      return _buildErrorState(errorMessage, () => _loadOrders(status));
+      return _buildErrorState(errorMessage, status, () => _loadOrders(status));
     }
 
     if (orders.isEmpty) {
@@ -277,20 +279,21 @@ class _OrdersScreenState extends State<OrdersScreen>
 
   // Empty state for each tab
   Widget _buildEmptyState(String status) {
+    final l10n = S.of(context)!;
     String message;
     IconData icon;
 
     switch (status) {
       case 'completed':
-        message = 'No completed orders yet';
+        message = l10n.noCompletedOrders;
         icon = Icons.check_circle_outline;
         break;
       case 'cancelled':
-        message = 'No cancelled orders';
+        message = l10n.noCancelledOrders;
         icon = Icons.cancel_outlined;
         break;
       default:
-        message = 'No orders in progress';
+        message = l10n.noOrdersInProgress;
         icon = Icons.shopping_bag_outlined;
     }
 
@@ -317,7 +320,23 @@ class _OrdersScreenState extends State<OrdersScreen>
   }
 
   // Error state
-  Widget _buildErrorState(String message, VoidCallback onRetry) {
+  Widget _buildErrorState(
+      String messageKey, String status, VoidCallback onRetry) {
+    final l10n = S.of(context)!;
+    String displayMessage;
+
+    // Translate the error message key
+    if (messageKey == 'pleaseLoginToViewOrders') {
+      displayMessage = l10n.pleaseLoginToViewOrders;
+    } else if (messageKey == 'failedToLoadOrders') {
+      displayMessage = l10n.failedToLoadOrders;
+    } else if (messageKey.startsWith('errorLoadingOrders:')) {
+      final error = messageKey.substring('errorLoadingOrders:'.length);
+      displayMessage = l10n.errorLoadingOrders(error);
+    } else {
+      displayMessage = messageKey;
+    }
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -327,7 +346,7 @@ class _OrdersScreenState extends State<OrdersScreen>
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Text(
-              message,
+              displayMessage,
               style: TextStyle(
                 color: Colors.grey[600],
                 fontSize: 16,
@@ -341,7 +360,8 @@ class _OrdersScreenState extends State<OrdersScreen>
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFF5141E),
             ),
-            child: const Text('Retry', style: TextStyle(color: Colors.white)),
+            child:
+                Text(l10n.retry, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),
@@ -349,6 +369,7 @@ class _OrdersScreenState extends State<OrdersScreen>
   }
 
   Widget _buildOrderCard(Map<String, dynamic> order) {
+    final l10n = S.of(context)!;
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       padding: const EdgeInsets.all(16),
@@ -373,7 +394,7 @@ class _OrdersScreenState extends State<OrdersScreen>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'Order #${order['order_id']}',
+                l10n.orderWithId(order['order_id'].toString()),
                 style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -460,7 +481,7 @@ class _OrdersScreenState extends State<OrdersScreen>
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Total',
+                    l10n.total,
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey[600],
@@ -486,9 +507,9 @@ class _OrdersScreenState extends State<OrdersScreen>
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text(
-                  'View Details',
-                  style: TextStyle(color: Color(0xFFF5141E)),
+                child: Text(
+                  l10n.viewDetails,
+                  style: const TextStyle(color: Color(0xFFF5141E)),
                 ),
               ),
             ],
@@ -499,14 +520,15 @@ class _OrdersScreenState extends State<OrdersScreen>
   }
 
   void _showOrderDetails(String orderId) async {
+    final l10n = S.of(context)!;
     try {
       // Get user data
       final clientData = await StorageService.getClientData();
 
       if (clientData == null || clientData['user_id'] == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please login to view order details'),
+          SnackBar(
+            content: Text(l10n.pleaseLoginToViewOrderDetails),
             backgroundColor: Colors.red,
           ),
         );
@@ -549,7 +571,7 @@ class _OrdersScreenState extends State<OrdersScreen>
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['message'] ?? 'Failed to load order details'),
+            content: Text(result['message'] ?? l10n.failedToLoadOrderDetails),
             backgroundColor: Colors.red,
           ),
         );
@@ -562,7 +584,7 @@ class _OrdersScreenState extends State<OrdersScreen>
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error loading order details: $e'),
+          content: Text(l10n.errorLoadingOrderDetails(e.toString())),
           backgroundColor: Colors.red,
         ),
       );
@@ -570,6 +592,7 @@ class _OrdersScreenState extends State<OrdersScreen>
   }
 
   void _showOrderDetailsBottomSheet(Map<String, dynamic> orderData) {
+    final l10n = S.of(context)!;
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -600,7 +623,7 @@ class _OrdersScreenState extends State<OrdersScreen>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Order #${orderData['order_id']}',
+                    l10n.orderWithId(orderData['order_id'].toString()),
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
@@ -661,27 +684,31 @@ class _OrdersScreenState extends State<OrdersScreen>
                     const SizedBox(height: 20),
 
                     // Order Info
-                    _buildSectionTitle('Order Information'),
-                    _buildInfoRow('Order Date', orderData['created_at'] ?? ''),
-                    _buildInfoRow('Payment Method',
-                        orderData['payment_method']?.toString().toUpperCase() ?? ''),
+                    _buildSectionTitle(l10n.orderInformation),
+                    _buildInfoRow(
+                        l10n.orderDate, orderData['created_at'] ?? ''),
+                    _buildInfoRow(
+                        l10n.paymentMethod,
+                        orderData['payment_method']?.toString().toUpperCase() ??
+                            ''),
                     if (orderData['notes'] != null &&
                         orderData['notes'].toString().isNotEmpty)
-                      _buildInfoRow('Notes', orderData['notes']),
+                      _buildInfoRow(l10n.notes, orderData['notes']),
 
                     const SizedBox(height: 20),
 
                     // Delivery Info
-                    _buildSectionTitle('Delivery Information'),
+                    _buildSectionTitle(l10n.deliveryInformation),
                     _buildInfoRow(
-                        'Address', orderData['delivery_address'] ?? ''),
-                    _buildInfoRow('Customer Name', orderData['user_name'] ?? ''),
-                    _buildInfoRow('Phone', orderData['user_phone'] ?? ''),
+                        l10n.address, orderData['delivery_address'] ?? ''),
+                    _buildInfoRow(
+                        l10n.customerName, orderData['user_name'] ?? ''),
+                    _buildInfoRow(l10n.phone, orderData['user_phone'] ?? ''),
 
                     const SizedBox(height: 20),
 
                     // Order Items
-                    _buildSectionTitle('Order Items'),
+                    _buildSectionTitle(l10n.orderItems),
                     const SizedBox(height: 8),
                     ...((orderData['items'] as List?) ?? []).map((item) {
                       return Container(
@@ -690,7 +717,8 @@ class _OrdersScreenState extends State<OrdersScreen>
                         decoration: BoxDecoration(
                           color: Colors.grey[50],
                           borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.grey.withOpacity(0.2)),
+                          border:
+                              Border.all(color: Colors.grey.withOpacity(0.2)),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -733,7 +761,7 @@ class _OrdersScreenState extends State<OrdersScreen>
                     const SizedBox(height: 20),
 
                     // Order Summary
-                    _buildSectionTitle('Order Summary'),
+                    _buildSectionTitle(l10n.orderSummary),
                     const SizedBox(height: 8),
                     Container(
                       padding: const EdgeInsets.all(12),
@@ -745,19 +773,17 @@ class _OrdersScreenState extends State<OrdersScreen>
                       child: Column(
                         children: [
                           _buildSummaryRow(
-                              'Subtotal',
+                              l10n.subtotal,
                               '${orderData['subtotal_amount'] ?? '0'} FCFA',
                               false),
                           const SizedBox(height: 8),
                           _buildSummaryRow(
-                              'Delivery Fee',
+                              l10n.deliveryFee,
                               '${orderData['delivery_fee'] ?? '0'} FCFA',
                               false),
                           const Divider(height: 16),
-                          _buildSummaryRow(
-                              'Total',
-                              '${orderData['total_amount'] ?? '0'} FCFA',
-                              true),
+                          _buildSummaryRow(l10n.total,
+                              '${orderData['total_amount'] ?? '0'} FCFA', true),
                         ],
                       ),
                     ),

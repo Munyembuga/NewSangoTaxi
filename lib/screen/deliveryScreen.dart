@@ -67,7 +67,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
     } catch (e) {
       setState(() {
         _hasCategoriesError = true;
-        _categoriesErrorMessage = 'Failed to load categories: $e';
+        _categoriesErrorMessage = 'failedToLoadCategories:$e';
         _isLoadingCategories = false;
       });
     }
@@ -101,7 +101,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
     } catch (e) {
       setState(() {
         _hasProductsError = true;
-        _productsErrorMessage = 'Failed to load products: $e';
+        _productsErrorMessage = 'failedToLoadProducts:$e';
         _isLoadingProducts = false;
       });
     }
@@ -135,7 +135,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
               categoryId: '',
               price: item['price'].toString(),
               imageUrl: item['image_url'] ?? '',
-              isAvailable: item['is_available'] == true || item['is_available'] == 1,
+              isAvailable:
+                  item['is_available'] == true || item['is_available'] == 1,
             );
 
             // Create CartItem with quantity and cart_id from API
@@ -166,9 +167,9 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
 
       if (clientData == null || clientData['user_id'] == null) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Please login to add items to cart'),
-            duration: Duration(seconds: 2),
+          SnackBar(
+            content: Text(S.of(context)!.pleaseLoginToAddToCart),
+            duration: const Duration(seconds: 2),
             backgroundColor: Colors.red,
           ),
         );
@@ -185,9 +186,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
         (item) => item.product.productId == product.productId,
       );
 
-      final newQuantity = existingIndex != -1
-          ? _cartItems[existingIndex].quantity + 1
-          : 1;
+      final newQuantity =
+          existingIndex != -1 ? _cartItems[existingIndex].quantity + 1 : 1;
 
       print('New quantity: $newQuantity'); // Debug log
 
@@ -207,7 +207,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
         // Show success message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('${product.productName} added to cart'),
+            content:
+                Text(S.of(context)!.productAddedToCart(product.productName)),
             duration: const Duration(seconds: 2),
             backgroundColor: const Color(0xFFF5141E),
           ),
@@ -216,7 +217,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
         // Show error message
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text(result['message'] ?? 'Failed to add to cart'),
+            content:
+                Text(result['message'] ?? S.of(context)!.failedToAddToCart),
             duration: const Duration(seconds: 3),
             backgroundColor: Colors.red,
           ),
@@ -226,7 +228,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
       print('Error in _addToCart: $e'); // Debug log
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Error adding to cart: $e'),
+          content: Text(S.of(context)!.errorAddingToCart(e.toString())),
           duration: const Duration(seconds: 3),
           backgroundColor: Colors.red,
         ),
@@ -264,7 +266,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Delivery',
+          l10n.delivery,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -326,7 +328,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Categories',
+                            l10n.categories,
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -365,7 +367,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
-                                    'Select a category to view products',
+                                    l10n.selectCategoryToViewProducts,
                                     style: TextStyle(
                                       fontSize: 16,
                                       color: Colors.grey[600],
@@ -395,7 +397,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                                               ),
                                               const SizedBox(height: 16),
                                               Text(
-                                                'No products available',
+                                                l10n.noProductsAvailable,
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                   color: Colors.grey[600],
@@ -481,7 +483,9 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                           child: Icon(
                             Icons.category,
                             size: 30,
-                            color: isSelected ? Colors.white : const Color(0xFFF5141E),
+                            color: isSelected
+                                ? Colors.white
+                                : const Color(0xFFF5141E),
                           ),
                         ),
                       )
@@ -492,7 +496,9 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
                         child: Icon(
                           Icons.category,
                           size: 30,
-                          color: isSelected ? Colors.white : const Color(0xFFF5141E),
+                          color: isSelected
+                              ? Colors.white
+                              : const Color(0xFFF5141E),
                         ),
                       ),
               ),
@@ -538,7 +544,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
           children: [
             // Product Image
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(12)),
               child: CachedNetworkImage(
                 imageUrl: product.imageUrl,
                 width: double.infinity,
@@ -711,7 +718,20 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
     );
   }
 
-  Widget _buildErrorWidget(String message, VoidCallback onRetry) {
+  Widget _buildErrorWidget(String messageKey, VoidCallback onRetry) {
+    final l10n = S.of(context)!;
+    String displayMessage;
+
+    if (messageKey.startsWith('failedToLoadCategories:')) {
+      final error = messageKey.substring('failedToLoadCategories:'.length);
+      displayMessage = l10n.failedToLoadCategories(error);
+    } else if (messageKey.startsWith('failedToLoadProducts:')) {
+      final error = messageKey.substring('failedToLoadProducts:'.length);
+      displayMessage = l10n.failedToLoadProducts(error);
+    } else {
+      displayMessage = messageKey;
+    }
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -719,7 +739,7 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
           Icon(Icons.error_outline, color: Colors.red, size: 64),
           const SizedBox(height: 16),
           Text(
-            message,
+            displayMessage,
             style: TextStyle(
               color: Colors.grey[600],
               fontSize: 16,
@@ -732,7 +752,8 @@ class _DeliveryScreenState extends State<DeliveryScreen> {
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFFF5141E),
             ),
-            child: const Text('Retry', style: TextStyle(color: Colors.white)),
+            child:
+                Text(l10n.retry, style: const TextStyle(color: Colors.white)),
           ),
         ],
       ),

@@ -441,5 +441,118 @@
   "rentals": "rentals",
   "editProfile": "Edit Profile",
   "email": "Email",
-  "save": "Save"
+  "save": "Save",
+  "myOrders": "My Orders",
+  "processing": "Processing",
+  "noCompletedOrders": "No completed orders yet",
+  "noCancelledOrders": "No cancelled orders",
+  "noOrdersInProgress": "No orders in progress",
+  "orderWithId": "Order #{id}",
+  "@orderWithId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "total": "Total",
+  "viewDetails": "View Details",
+  "pleaseLoginToViewOrders": "Please login to view orders",
+  "pleaseLoginToViewOrderDetails": "Please login to view order details",
+  "failedToLoadOrders": "Failed to load orders",
+  "failedToLoadOrderDetails": "Failed to load order details",
+  "errorLoadingOrders": "Error loading orders: {error}",
+  "@errorLoadingOrders": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "errorLoadingOrderDetails": "Error loading order details: {error}",
+  "@errorLoadingOrderDetails": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "orderInformation": "Order Information",
+  "orderDate": "Order Date",
+  "paymentMethod": "Payment Method",
+  "notes": "Notes",
+  "deliveryInformation": "Delivery Information",
+  "customerName": "Customer Name",
+  "phone": "Phone",
+  "orderItems": "Order Items",
+  "orderSummary": "Order Summary",
+  "subtotal": "Subtotal",
+  "deliveryFee": "Delivery Fee",
+  "delivery": "Delivery",
+  "categories": "Categories",
+  "selectCategoryToViewProducts": "Select a category to view products",
+  "noProductsAvailable": "No products available",
+  "pleaseLoginToAddToCart": "Please login to add items to cart",
+  "productAddedToCart": "{productName} added to cart",
+  "@productAddedToCart": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "failedToAddToCart": "Failed to add to cart",
+  "errorAddingToCart": "Error adding to cart: {error}",
+  "@errorAddingToCart": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToLoadCategories": "Failed to load categories: {error}",
+  "@failedToLoadCategories": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToLoadProducts": "Failed to load products: {error}",
+  "@failedToLoadProducts": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "checkout": "Checkout",
+  "deliveryAddress": "Delivery Address",
+  "enterDeliveryAddress": "Enter delivery address",
+  "deliveryNotesOptional": "Delivery Notes (Optional)",
+  "deliveryInstructionsHint": "Add any special instructions for delivery...",
+  "placeOrder": "Place Order",
+  "pleaseEnterDeliveryAddress": "Please enter a delivery address",
+  "pleaseSelectValidAddress": "Please select a valid address from suggestions",
+  "pleaseLoginToPlaceOrder": "Please login to place order",
+  "orderPlaced": "Order Placed",
+  "orderPlacedSuccessfully": "Your order has been placed successfully!",
+  "notesWithValue": "Notes: {value}",
+  "@notesWithValue": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "ok": "OK",
+  "failedToPlaceOrder": "Failed to place order",
+  "errorPlacingOrder": "Error placing order: {error}",
+  "@errorPlacingOrder": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "shoppingCart": "Shopping Cart",
+  "cartEmpty": "Your cart is empty",
+  "pleaseLoginToUpdateCart": "Please login to update cart",
+  "invalidCartItem": "Invalid cart item",
+  "failedToUpdateCart": "Failed to update cart",
+  "errorUpdatingCart": "Error updating cart: {error}",
+  "@errorUpdatingCart": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToRemoveItem": "Failed to remove item",
+  "errorRemovingItem": "Error removing item: {error}",
+  "@errorRemovingItem": {
+    "placeholders": {
+      "error": {}
+    }
+  }
 }

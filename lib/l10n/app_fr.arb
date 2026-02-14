@@ -340,5 +340,118 @@
   "rentals": "locations",
   "editProfile": "Modifier le profil",
   "email": "E-mail",
-  "save": "Enregistrer"
+  "save": "Enregistrer",
+  "myOrders": "Mes commandes",
+  "processing": "En traitement",
+  "noCompletedOrders": "Pas encore de commandes terminées",
+  "noCancelledOrders": "Aucune commande annulée",
+  "noOrdersInProgress": "Aucune commande en cours",
+  "orderWithId": "Commande #{id}",
+  "@orderWithId": {
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "total": "Total",
+  "viewDetails": "Voir détails",
+  "pleaseLoginToViewOrders": "Veuillez vous connecter pour voir les commandes",
+  "pleaseLoginToViewOrderDetails": "Veuillez vous connecter pour voir les détails de la commande",
+  "failedToLoadOrders": "Échec du chargement des commandes",
+  "failedToLoadOrderDetails": "Échec du chargement des détails de la commande",
+  "errorLoadingOrders": "Erreur lors du chargement des commandes: {error}",
+  "@errorLoadingOrders": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "errorLoadingOrderDetails": "Erreur lors du chargement des détails de la commande: {error}",
+  "@errorLoadingOrderDetails": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "orderInformation": "Informations sur la commande",
+  "orderDate": "Date de commande",
+  "paymentMethod": "Mode de paiement",
+  "notes": "Notes",
+  "deliveryInformation": "Informations de livraison",
+  "customerName": "Nom du client",
+  "phone": "Téléphone",
+  "orderItems": "Articles commandés",
+  "orderSummary": "Récapitulatif de la commande",
+  "subtotal": "Sous-total",
+  "deliveryFee": "Frais de livraison",
+  "delivery": "Livraison",
+  "categories": "Catégories",
+  "selectCategoryToViewProducts": "Sélectionnez une catégorie pour voir les produits",
+  "noProductsAvailable": "Aucun produit disponible",
+  "pleaseLoginToAddToCart": "Veuillez vous connecter pour ajouter des articles au panier",
+  "productAddedToCart": "{productName} ajouté au panier",
+  "@productAddedToCart": {
+    "placeholders": {
+      "productName": {}
+    }
+  },
+  "failedToAddToCart": "Échec de l'ajout au panier",
+  "errorAddingToCart": "Erreur lors de l'ajout au panier: {error}",
+  "@errorAddingToCart": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToLoadCategories": "Échec du chargement des catégories: {error}",
+  "@failedToLoadCategories": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToLoadProducts": "Échec du chargement des produits: {error}",
+  "@failedToLoadProducts": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "checkout": "Paiement",
+  "deliveryAddress": "Adresse de livraison",
+  "enterDeliveryAddress": "Entrez l'adresse de livraison",
+  "deliveryNotesOptional": "Notes de livraison (Optionnel)",
+  "deliveryInstructionsHint": "Ajoutez des instructions spéciales pour la livraison...",
+  "placeOrder": "Passer la commande",
+  "pleaseEnterDeliveryAddress": "Veuillez entrer une adresse de livraison",
+  "pleaseSelectValidAddress": "Veuillez sélectionner une adresse valide dans les suggestions",
+  "pleaseLoginToPlaceOrder": "Veuillez vous connecter pour passer la commande",
+  "orderPlaced": "Commande passée",
+  "orderPlacedSuccessfully": "Votre commande a été passée avec succès!",
+  "notesWithValue": "Notes: {value}",
+  "@notesWithValue": {
+    "placeholders": {
+      "value": {}
+    }
+  },
+  "ok": "OK",
+  "failedToPlaceOrder": "Échec de la commande",
+  "errorPlacingOrder": "Erreur lors de la commande: {error}",
+  "@errorPlacingOrder": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "shoppingCart": "Panier",
+  "cartEmpty": "Votre panier est vide",
+  "pleaseLoginToUpdateCart": "Veuillez vous connecter pour modifier le panier",
+  "invalidCartItem": "Article du panier invalide",
+  "failedToUpdateCart": "Échec de la mise à jour du panier",
+  "errorUpdatingCart": "Erreur lors de la mise à jour du panier: {error}",
+  "@errorUpdatingCart": {
+    "placeholders": {
+      "error": {}
+    }
+  },
+  "failedToRemoveItem": "Échec de la suppression de l'article",
+  "errorRemovingItem": "Erreur lors de la suppression de l'article: {error}",
+  "@errorRemovingItem": {
+    "placeholders": {
+      "error": {}
+    }
+  }
 }
